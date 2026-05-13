@@ -127,8 +127,10 @@ def findAvailableRooms(db):
     db.printFormat(availableRooms, headers)
 
 if __name__ == "__main__":
-    mysql_username = 'shirleyl'
-    mysql_password = 'ahjael7B'
+    # Replace with your own credentials
+    mysql_username = 'USERNAME'
+    mysql_password = 'PASSWORD'
+    database_name = 'DATABASE_NAME'
     db = Database('localhost', mysql_username, mysql_password, mysql_username)
 
     run = True
