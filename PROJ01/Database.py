@@ -1,7 +1,3 @@
-# Name: Shirley Lin
-# Date: 2/2/26
-# Assignment: Homework 1 - Part 2
-
 import csv
 import os.path
 

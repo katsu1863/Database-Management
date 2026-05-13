@@ -1,7 +1,3 @@
-# Name: Shirley Lin
-# Last Updated: 4/2/26
-# Assignment: Homework 4
-
 import mysql.connector
 from tabulate import tabulate
 
