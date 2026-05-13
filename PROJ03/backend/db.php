@@ -1,8 +1,9 @@
 <?php
+// Replace with your own credentials
 $HOST = "localhost";
-$USERNAME = "shirleyl";
-$PASSWORD = "ahjael7B";
-$DB_NAME = "shirleyl";
+$USERNAME = "USERNAME";
+$PASSWORD = "PASSWORD";
+$DB_NAME = "DATABASE_NAME";
 
 $conn = new mysqli($HOST, $USERNAME, $PASSWORD, $DB_NAME);
 
