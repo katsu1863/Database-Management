@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Database Web Interface</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+        <div class="nav-item active" onclick="showSection('artist', this)">Artist</div>
+        <div class="nav-item" onclick="showSection('concert', this)">Concert</div>
+        <div class="nav-item" onclick="showSection('customer', this)">Customer</div>
+        <div class="nav-item" onclick="showSection('ticket', this)">Ticket</div>
+        <div class="nav-item" onclick="showSection('queries', this)">Queries</div>
+    </div>
+
+
+    <!-- Artist Content-->
+    <div id="artist" class="content-section">
+        <div class="layout">
+            <!-- Form to add artist -->
+            <div>
+                <h2>Add an Artist</h2>
+                <div class="form-container">
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label>Artist Name</label>
+                            <input type="text" id="artist-name" placeholder="e.g. Sabrina Carpenter">
+                        </div>
+                        <div class="form-field">
+                            <label>Genre</label>
+                            <input type="text" id="genre" placeholder="e.g. Pop">
+                        </div>
+                    </div>
+                    <button class="submit-btn" onclick="addArtist()">Insert Record</button>
+                </div>
+            </div>
+
+            <!-- Display contents of Artist table-->
+            <div>
+                <h2>Artist Table</h2>
+                <table class="database-table">
+                    <!-- Field Names-->
+                    <thead>
+                        <tr>
+                            <th>Artist ID</th>
+                            <th>Artist Name</th>
+                            <th>Genre</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Records -->
+                    <tbody id="artist-table">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Concert Content-->
+    <div id="concert" class="content-section hidden">
+        <div class="layout">
+            <!-- Form to add a concert -->
+            <div>
+                <h2>Add a Concert</h2>
+                <div class="form-container">
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label>Venue Name</label>
+                            <input type="text" id="venue-name" placeholder="e.g. Citi Field">
+                        </div>
+                        <div class="form-field">
+                            <label>City</label>
+                            <input type="text" id="city" placeholder="e.g. Queens">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label>Concert Date</label>
+                            <input type="date" id="concert-date">
+                        </div>
+                        <div class="form-field">
+                            <label>Artist ID</label>
+                            <input type="number" min="1" id="artist-id" placeholder="e.g. 1">
+                        </div>
+                    </div>
+                    <button class="submit-btn" onclick="addConcert()">Insert Record</button>
+                </div>
+            </div>
+
+            <!-- Display contents of Concert table -->
+            <div>
+                <h2>Concert Table</h2>
+                <table class="database-table">
+                    <!-- Field Names-->
+                    <thead>
+                        <tr>
+                            <th>Concert ID</th>
+                            <th>Venue Name</th>
+                            <th>City</th>
+                            <th>Concert Date</th>
+                            <th>Artist ID</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Records -->
+                    <tbody id="concert-table">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Customer Content -->
+    <div id="customer" class="content-section hidden">
+        <div class="layout">
+            <!-- Form to add customer -->
+            <div>
+                <h2>Add a Customer</h2>
+                <div class="form-container">
+                    <div class="form-field">
+                        <label>Customer Name</label>
+                        <input type="text" id="customer-name" placeholder="e.g. Shirley">
+                    </div>
+                    <button class="submit-btn" onclick="addCustomer()">Insert Record</button>
+                </div>
+            </div>
+
+            <!-- Display contents of Customer table -->
+            <div>
+                <h2>Customer Table</h2>
+                <table class="database-table">
+                    <!-- Field Names-->
+                    <thead>
+                        <tr>
+                            <th>Customer ID</th>
+                            <th>Customer Name</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Records -->
+                    <tbody id="customer-table">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Ticket Content -->
+    <div id="ticket" class="content-section hidden">
+        <div class="layout">
+            <!-- Form to add ticket -->
+            <div>
+                <h2>Add a Ticket</h2>
+                <div class="form-container">
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label>Concert ID</label>
+                            <input type="number" min="1" id="concert-id" placeholder="e.g. 1">
+                        </div>
+                        <div class="form-field">
+                            <label>Customer ID</label>
+                            <input type="number" min="1" id="customer-id" placeholder="e.g. 1">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label>Seat Number</label>
+                            <input type="text" id="seat-number" placeholder="e.g. 23D">
+                        </div>
+                        <div class="form-field">
+                            <label>Price</label>
+                            <input type="number" min="0" step="0.01" id="price" placeholder="e.g. 12.34">
+                        </div>
+                    </div>
+                    <button class="submit-btn" onclick="addTicket()">Insert Record</button>
+                </div>
+            </div>
+
+            <!-- Display contents of Ticket table -->
+            <div>
+                <h2>Ticket Table</h2>
+                <table class="database-table">
+                    <!-- Field Names-->
+                    <thead>
+                        <tr>
+                            <th>Ticket ID</th>
+                            <th>Concert ID</th>
+                            <th>Customer ID</th>
+                            <th>Seat Number</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Records -->
+                    <tbody id="ticket-table">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Queries Content -->
+    <div id="queries" class="content-section hidden">
+        <!-- Secondary Navigation Bar -->
+        <div class="sub-bar">
+            <div class="sub-item active" onclick="showSubSection('concert-city', this)">Filter Concert by City</div>
+            <div class="sub-item" onclick="showSubSection('concert-artist', this)">Filter Concert by Artist</div>
+            <div class="sub-item" onclick="showSubSection('customer-spending', this)">View Customer Spending</div>
+            <div class="sub-item" onclick="showSubSection('top-artists', this)">View Top Artists by Revenue</div>
+        </div>
+
+        <!-- Filter Concert by City -->
+        <div id="concert-city" class="sub-content">
+            <!-- Dropdown Menu -->
+            <div class="dropdown">
+                <select id="city-filter" onchange="filterByCity()">
+                    <option value="all">Filter by City</option>
+                </select>
+            </div>
+
+            <table class="database-table">
+                <thead>
+                    <tr>
+                        <th>Concert ID</th>
+                        <th>Venue Name</th>
+                        <th>City</th>
+                        <th>Concert Date</th>
+                        <th>Artist ID</th>
+                    </tr>
+                </thead>
+
+                <tbody id="concert-city-table">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Filter Concert by Artist -->
+        <div id="concert-artist" class="sub-content hidden">
+            <div class="dropdown">
+                <select id="artist-filter" onchange="filterByArtist()">
+                    <option value="all">Filter by Artist</option>
+                </select>
+            </div>
+
+            <table class="database-table">
+                <thead>
+                    <tr>
+                        <th>Artist Name</th>
+                        <th>Venue Name</th>
+                        <th>City</th>
+                        <th>Concert Date</th>
+                    </tr>
+                </thead>
+
+                <tbody id="concert-artist-table">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- View Customer Spending -->
+        <div id="customer-spending" class="sub-content hidden">
+            <div class = "dropdown">
+                <select id="customer-filter" onchange="filterByCustomer()">
+                    <option value="all">Filter by Customer</option>
+                </select>
+            </div>
+
+            <table class="database-table">
+                <thead>
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Customer Name</th>
+                        <th>Total Spending</th>
+                    </tr>
+                </thead>
+
+                <tbody id="customer-spending-table">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- View Top Artists by Revenue -->
+        <div id="top-artists" class="sub-content hidden">
+            <table class="database-table">
+                <thead>
+                    <tr>
+                        <th>Artist Name</th>
+                        <th>Total Revenue</th>
+                    </tr>
+                </thead>
+
+                <tbody id="top-artists-table">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
